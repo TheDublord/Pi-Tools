@@ -1,3 +1,7 @@
 # PiInfoz
 
-# All you do is run them. Nothing fancy to any of em. 
+Simply run this program. Shows basic stats of the Pi.
+
+# Pi-Infoz-adv
+
+Shows a few more things like hardware clock speeds and storage space across the root folder. 
