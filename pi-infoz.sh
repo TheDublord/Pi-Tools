@@ -2,7 +2,7 @@
 # Script: Infoz
 # Purpose: A simple Bash Script to show temperature and a few other things about the pi.
 # -------------------------------------------------------
-# Version: 0.1.0
+# Version: 0.0.5
 # -------------------------------------------------------
 
 # Heres how the GPU temp is gotten.
@@ -38,84 +38,49 @@ pubip=$(curl -s ifconfig.me)
 # Rounds the CPU usage value to a 1.1 type number vs 1.111
 usgroun=$(printf '%.*f\n' 1 $cpuavg)
 usgr=$(printf '%.*f\n' 0 $usgroun)
-usgoof=$(
-if [ "$usgr" -le 0 ]
-        then
-                echo "▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯"
-elif [ "$usgr" -le 5 ]
-        then
-                echo "▮▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯"
-elif [ "$usgr" -le 10 ]
-        then
-                echo "▮▮▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯"
-elif [ "$usgr" -le 15 ]
-        then
-                echo "▮▮▮▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯"
-elif [ "$usgr" -le 20 ]
-        then
-                echo "▮▮▮▮▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯"
-elif [ "$usgr" -le 25 ]
-        then
-                echo "▮▮▮▮▮▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯"
-elif [ "$usgr" -le 30 ]
-        then
-                echo "▮▮▮▮▮▮▯▯▯▯▯▯▯▯▯▯▯▯▯▯"
-elif [ "$usgr" -le 35 ]
-        then
-                echo "▮▮▮▮▮▮▮▯▯▯▯▯▯▯▯▯▯▯▯▯"
-elif [ "$usgr" -le 40 ]
-        then
-                echo "▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯▯▯▯▯▯"
-elif [ "$usgr" -le 45 ]
-        then
-                echo "▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯▯▯▯▯"
-elif [ "$usgr" -le 50 ]
-        then
-                echo "▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯▯▯▯"
-elif [ "$usgr" -le 55 ]
-        then
-                echo "▮▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯▯▯"
-elif [ "$usgr" -le 60 ]
-        then
-                echo "▮▮▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯▯"
-elif [ "$usgr" -le 65 ]
-        then
-                echo "▮▮▮▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯"
-elif [ "$usgr" -le 70 ]
-        then
-                echo "▮▮▮▮▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯"
-elif [ "$usgr" -le 75 ]
-        then
-                echo "▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯"
-elif [ "$usgr" -le 80 ]
-        then
-                echo "▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▯▯▯▯"
-elif [ "$usgr" -le 85 ]
-        then
-                echo "▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▯▯▯"
-elif [ "$usgr" -le 90 ]
-        then
-                echo "▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▯▯"
-elif [ "$usgr" -le 95 ]
-        then
-                echo "▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▯"
-elif [ "$usgr" -le 100 ]
-        then
-                echo "▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮"
+
+let upSeconds="$(/usr/bin/cut -d. -f1 /proc/uptime)"
+let secs=$((${upSeconds}%60))
+let mins=$((${upSeconds}/60%60))
+let hours=$((${upSeconds}/3600%24))
+let days=$((${upSeconds}/86400))
+UPTIME=`printf "%d days, %02dh%02dm%02ds" "$days" "$hours" "$mins" "$secs"`
+one=$(cat /proc/loadavg | awk {'print $1'})
+five=$(cat /proc/loadavg | awk {'print $2'})
+fifteen=$(cat /proc/loadavg | awk {'print $3'})
+
+memavil=$(cat /proc/meminfo | grep MemAvailable | awk {'print $2'})
+memavilmb=$(($memavil/1000))
+memtot=$(cat /proc/meminfo | grep MemTotal | awk {'print $2'})
+memtotmb=$(($memtot/1000))
+memused=`expr $memtotmb - $memavilmb`
+
+swptot=$(cat /proc/meminfo | grep SwapTotal | awk {'print $2'})
+swptotmb=$(($swptot/1000))
+swpfree=$(cat /proc/meminfo | grep SwapFree | awk {'print $2'})
+swpfreemb=$(($swpfree/1000))
+usedswp=`expr $swptot - $swpfree`
+usedswpmb=`expr $swptotmb - $swpfreemb`
+swpif=$(if [ $usedswpmb -le 2 ]
+then
+echo -e "$usedswp\e[0mKB"
+else
+echo -e "$usedswpmb\e[0mMB"
 fi
 )
 
-echo -e "\e[1m\e[34m-------------------------------------------\e[0m"
-echo -e "\e[32m$simptime \e[34m/\e[0m\e[91m $timeconv\e[0m\e[0m \e[34m/\e[0m\e[32m $(whoami) @ $(hostname)\e[0m"
-echo -e "\e[1m\e[34m-------------------------------------------\e[0m"
+echo -e "\e[1m\e[34m--------------------------------------------------------\e[0m"
+echo -e "        \e[32m$simptime \e[34m/\e[0m\e[91m $timeconv\e[0m\e[0m \e[34m/\e[0m\e[32m $(whoami) @ $(hostname)\e[0m"
+echo -e "\e[1m\e[34m--------------------------------------------------------\e[0m"
 echo
-echo -e "GPU => $groun˚C ($gconvF˚F) - $warn"
+echo -e "Temperatures......: CPU: $cpuC°C ($cconvF°F) GPU: $groun°C ($gconvF°F)"
+echo -e "Uptime............: ${UPTIME}             "
+echo -e "Running Proceses..: $(ps ax | wc -l | tr -d " ")"
+echo -e "Memory............: $memused\e[0mMB (Free) / $memtotmb\e[0mMB (Total)"
+echo -e "Swap..............: $swpif\e[0m (Used) / $swptotmb\e[0mMB (Total)"
+echo "Load Averages.....: ${one}, ${five}, ${fifteen} (1, 5, 15 min)"
 echo
-echo -e "CPU => $cpuC˚C ($cconvF˚F) - $warn"
-echo
-echo -e "CPU Usage => $usgroun% > $usgoof"
-echo
-echo -e "\e[1m\e[34m-------------------------------------------\e[0m"
+echo -e "\e[1m\e[34m--------------------------------------------------------\e[0m"
 echo -e "Local IP  => $locip"
 echo -e "Public IP => $pubip"
-echo -e "\e[1m\e[34m-------------------------------------------\e[0m"
+echo -e "\e[1m\e[34m--------------------------------------------------------\e[0m"
