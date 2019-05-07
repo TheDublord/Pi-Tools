@@ -17,8 +17,8 @@ If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
  - Device: [e.g. Raspberry Pi 2? 3?]
- - Version of raspian?
+ - Version of raspian? Kernal?
  - Version of script(s)
 
 **Additional context**
-Add any other context about the problem here.
+If you wanna be a super awesome person, a snippet of the suggested fix would be great.
