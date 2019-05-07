@@ -2,8 +2,6 @@
 # Script: Infoz
 # Purpose: A simple Bash Script to show temperature and a few other things about the pi.
 # -------------------------------------------------------
-# Version: 0.0.5
-# -------------------------------------------------------
 
 # Heres how the GPU temp is gotten.
 gtemp=$(vcgencmd measure_temp | cut -c6-9)
