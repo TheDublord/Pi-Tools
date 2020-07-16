@@ -1,12 +1,12 @@
 #!/bin/bash
 # -----------------------------------------------
-# Version: 0.0.1
+# Version: 0.0.2
 # Discord: @Mr. Dubz#1337
 # GitHub: TheDublord
 # https://github.com/TheDublord/Pi-Tools
 # -----------------------------------------------
 DELAY=2 # Delay in seconds
-locip=$(ip route get 1 | awk '{print $NF;exit}')
+locip=$(ip route | grep default | awk '{print $7}')
 pubip=$(curl -s ifconfig.me)
 statrouts=$(ip route | grep default | awk '{print $3}')
 
@@ -111,6 +111,7 @@ _EOF_
 	sudo tee -a /etc/dhcpcd > /dev/null <<EOT
 	static_routers=$statrouts
 	static domain_name_servers=1.1.1.1
+	EOT
 	continue
 	;;	
       0)
