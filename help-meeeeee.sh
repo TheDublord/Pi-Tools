@@ -1,7 +1,7 @@
 #!/bin/bash
 # -----------------------------------------------
-# Version: 0.0.2
-# Discord: @Mr. Dubz#1337
+# Version: 0.0.3
+# Discord: Mr. Dubz#1337
 # GitHub: TheDublord
 # https://github.com/TheDublord/Pi-Tools
 # -----------------------------------------------
@@ -114,6 +114,18 @@ _EOF_
 	EOT
 	continue
 	;;	
+      7)
+        sudo rfkill unblock all
+        sudo tee -a /etc/network/interfaces > /dev/null <<EOT
+        auto lo
+        iface lo inet loopback
+        allow-hotplug wlan0
+        auto wlan0
+        iface wlan0 inet dhcp
+        wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+        EOT
+        continue
+        ;;
       0)
         break
         ;;
