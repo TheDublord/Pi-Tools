@@ -1,6 +1,6 @@
 # Pi-Tools
 
-This is my little space for adding helpful scripts to help you with your Raspberry Pi. No garuetees that theyll work for everyone, but if you do have an issue, do let me know. 
+A repo containing helpful scripts for your Raspberry Pi. No garuetees that theyll work for everyone, but if you have an issue, do let me know. 
 
 # Pi Infoz
 
@@ -9,4 +9,8 @@ Simply run this program. Shows basic stats of the Pi. Includes time, tempatures,
 
 # PiHole Backuper
 
-Little script that copies and zips your /etc/pihole directory and saves it to your home folder. Great for if you disabled the Webmin interface to free up apache/lighttpd for another use. 
+Little script that copies and zips your /etc/pihole directory and saves it to your home folder. Great for if you disabled the Webmin interface to free up port 80/443 for other uses.
+
+# Help-Meeeeee
+
+Yet another dashing little script, but this time for troubleshooting. If you use this, please only use the options once or else some options will create duplicate additions to a file. This is still a work in progress, im always looking for things to add that can generally be solved by editing a config or other file. 
