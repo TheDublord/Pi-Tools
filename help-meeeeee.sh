@@ -18,7 +18,7 @@ Please Select:
 1. Create SSH File
 2. Connect to WiFi 
 3. Display IP(s)
-4. Change Display Mode
+4. Change Display Mode (fixes "Cannot currently show the dekstop" in vnc as well)
 5. What Pi do I have?
 6. Set Static IP
 0. Quit
