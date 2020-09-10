@@ -1,7 +1,6 @@
 # Pi-Tools
 
-A repo containing helpful scripts for your Raspberry Pi. No garuetees that theyll work for everyone, but if you have an issue, do let me know. 
-
+A repo containing helpful scripts for your Raspberry Pi. No garuetees that theyll work for everyone, but if you have an issue, do let me know. The goldof these scripts is to be self contained and not rely on outside programs other than the ones provided by default with Raspian.
 # Pi Infoz
 
 Simply run this program. Shows basic stats of the Pi. Includes time, tempatures, IPs, and CPU Usage.                                       
