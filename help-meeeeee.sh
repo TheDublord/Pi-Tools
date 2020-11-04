@@ -1,6 +1,6 @@
 #!/bin/bash
 # -----------------------------------------------
-# Version: 0.0.3
+# Version: 0.0.4
 # Discord: Mr. Dubz#1337
 # GitHub: TheDublord
 # https://github.com/TheDublord/Pi-Tools
@@ -66,7 +66,7 @@ _EOF_
  	pairwise=CCMP
  	auth_alg=OPEN
         }	
-       	EOT
+EOT
 	echo "File made, please reboot for changes to take affect!"
 	fi
 	sleep 10
@@ -87,7 +87,7 @@ _EOF_
 	sudo tee -a config.txt > /dev/null <<EOT
 	hdmi_mode=$mode
 	hdmi_force_hotplug=1
-	EOT
+EOT
         continue
         ;;
 
@@ -102,16 +102,16 @@ _EOF_
 	if [ "$interface" = eth ] ;then
         sudo tee -a /etc/dhcpcd > /dev/null <<EOT
 	interface eth0
-	EOT
+EOT
 	else
         sudo tee -a /etc/dhcpcd > /dev/null <<EOT
 	interface wlan0
-	EOT
+EOT
 	fi
 	sudo tee -a /etc/dhcpcd > /dev/null <<EOT
 	static_routers=$statrouts
 	static domain_name_servers=1.1.1.1
-	EOT
+EOT
 	continue
 	;;	
       7)
@@ -123,9 +123,31 @@ _EOF_
         auto wlan0
         iface wlan0 inet dhcp
         wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
-        EOT
+EOT
         continue
         ;;
+      8)
+        sudo tee -a /boot/cmdline.txt > /dev/null <<EOT
+        usbhid.mousepoll=8
+EOT
+        continue
+        ;;
+      9)
+        echo -n "What Pi do you have? (0/3b/3b+/4):"
+        read piver
+        if [ "$piver" = 0 ] ;then
+        sudo sed -i 's/#arm_freq={100,900}/arm_freq=1000/g' /boot/config.txt
+        elif [ "$piver" = 3b ] ;then
+        sudo sed -i 's/arm_freq={100,900}/arm_freq=1200/g' /boot/config.txt
+        elif [ "$piver" = 3b+ ] ;then
+        sudo sed -i 's/arm_freq={100,900}/arm_freq=1400/g' /boot/config.txt
+        elif [ "$piver" = 4 ] ;then
+        sudo sed -i 's/arm_freq={100,900}/arm_freq=1500/g' /boot/config.txt
+        else
+        echo -n "$piver doesnt exist breh -- You livin in the future?"
+        fi
+	continue
+	;;
       0)
         break
         ;;
