@@ -17,4 +17,4 @@ Yet another dashing little script, but this time for troubleshooting. If you use
 
 # Wifi-Magicer
 
-Specifically for making a properly formatted wpa_supplicant script. I plan on making a windows version so you can prepare it on windows and drop it on the SD card. 
+Specifically for making a properly formatted wpa_supplicant script. I plan on making a windows version so you can prepare it on windows and drop it on the SD card. The .cmd file is for windows, the .sh file is for linux. 
