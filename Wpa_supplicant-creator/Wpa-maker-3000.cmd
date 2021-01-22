@@ -17,3 +17,5 @@ echo pairwise=CCMP
 echo auth_alg=OPEN
 echo }
 )>"wpa_supplicant.conf"
+echo "File created in folder this script is in. Place it in the boot partition of the pis micro sd card."
+PAUSE
