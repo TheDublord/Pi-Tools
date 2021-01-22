@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo touch wpa_supplicant.conf && echo "Created wpa_supplicant.conf file!"
+touch wpa_supplicant.conf && echo "Created wpa_supplicant.conf file!"
 sleep 1
 echo -n "Name of your WiFi Network? - "
 read user
@@ -8,7 +8,7 @@ echo -n "Whats your password? (Dont trust me? https://www.raspberrypi.org/docume
 read passwd
 echo -n "What is your country code? (Ex: If you live in the US, US is the country code. fr=france, de=germany, gb=Great Britain, se=sweden) - "
 read whereulive
-sudo tee -a wpa_supplicant.conf > /dev/null << EOT
+tee -a wpa_supplicant.conf > /dev/null << EOT
 ctrl_interface=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 country=$whereulive
@@ -22,4 +22,4 @@ pairwise=CCMP
 auth_alg=OPEN
 }
 EOT
-echo "File made, 'chmod +w wpa_supplicant.conf' to edit the file further and 'sudo mv wpa_supplicant.conf /boot/wpa_supplicant.conf' to move the file corerctly"
+echo "File made,'sudo mv wpa_supplicant.conf /boot/wpa_supplicant.conf' to move the file corerctly"
