@@ -1,6 +1,6 @@
 #!/bin/bash
 # -----------------------------------------------
-# Version: 0.0.4
+# Version: 0.0.5
 # Discord: Mr. Dubz#1337
 # GitHub: TheDublord
 # https://github.com/TheDublord/Pi-Tools
@@ -21,14 +21,15 @@ Please Select:
 4. Change Display Mode (fixes "Cannot currently show the dekstop" in vnc as well)
 5. What Pi do I have?
 6. Set Static IP
+7. Mouse trailing behind where it should be / Laggy mouse. 
 0. Quit
 
 WARNING: PLEASE ONLY USE EACH OF THESE OPTIONS ONCE, MULTIPLE USES WILL CAUSE DUPLICATE OPTIONS WHICH CAN RESULT IN IT NOT WORKING!
 _EOF_
 
-  read -p "Enter selection [0-6] > "
+  read -p "Enter selection [0-7] > "
 
-  if [[ $REPLY =~ ^[0-6]$ ]]; then
+  if [[ $REPLY =~ ^[0-7]$ ]]; then
     case $REPLY in
       1)
         sudo touch /boot/ssh
