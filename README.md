@@ -1,3 +1,7 @@
+# How to obtain these scripts
+
+To obtain a script, go to the script you want, select the raw button in the top-ish right, copy that link, type `wget (link)` (link) being the link which you can just paste in by right clicking in PuTTY. Example `wget https://raw.githubusercontent.com/TheDublord/Pi-Tools/master/help-meeeeee.sh` will grab the help script.  
+
 # Pi-Tools
 
 A repo containing helpful scripts for your Raspberry Pi. No garuetees that theyll work for everyone, but if you have an issue, do let me know. The goal of these scripts is to be self contained and not rely on outside programs other than the ones provided by default with Raspian or if an outside program is needed it will probably be a seperate script unless it fits better into a mina script.
