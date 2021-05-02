@@ -1,6 +1,6 @@
 #!/bin/bash
 # -----------------------------------------------
-# Version: 0.0.5
+# Version: 0.0.6
 # Discord: Mr. Dubz#1337
 # GitHub: TheDublord
 # https://github.com/TheDublord/Pi-Tools
@@ -134,7 +134,7 @@ EOT
         continue
         ;;
       9)
-        echo -n "What Pi do you have? (0/3b/3b+/4):"
+        echo -n "What Pi do you have? (0/3b/3b+/4/400):"
         read piver
         if [ "$piver" = 0 ] ;then
         sudo sed -i 's/#arm_freq={100,900}/arm_freq=1000/g' /boot/config.txt
@@ -144,6 +144,8 @@ EOT
         sudo sed -i 's/arm_freq={100,900}/arm_freq=1400/g' /boot/config.txt
         elif [ "$piver" = 4 ] ;then
         sudo sed -i 's/arm_freq={100,900}/arm_freq=1500/g' /boot/config.txt
+	elif [ "$piver" = 400 ] ;then
+        sudo sed -i 's/arm_freq={100,900}/arm_freq=1800/g' /boot/config.txt
         else
         echo -n "$piver doesnt exist breh -- You livin in the future?"
         fi
