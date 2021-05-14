@@ -1,6 +1,8 @@
 # How to obtain these scripts
 
-To obtain a script, go to the script you want, select the raw button in the top-ish right, copy that link, type `wget (link)` (link) being the link which you can just paste in by right clicking in PuTTY. Example `wget https://raw.githubusercontent.com/TheDublord/Pi-Tools/master/help-meeeeee.sh` will grab the help script.  
+To obtain a script, go to the script you want, select the raw button in the top-ish right, copy that link, type `wget (link)` (link) being the link which you can just paste in by right clicking in PuTTY. Example `wget https://raw.githubusercontent.com/TheDublord/Pi-Tools/master/help-meeeeee.sh` will grab the help script.
+
+To execute the aformentioned help file, `sudo chmod +x help-meeeeee.sh` and then `sudo help-meeeeee.sh`. Yes, you do need sudo because unless you would like to switch to a root user, the pi cannot modify /etc or really anything outside of /home/pi without sudo. 
 
 # Pi-Tools
 
