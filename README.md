@@ -20,7 +20,7 @@ Little script that copies and zips your /etc/pihole directory and saves it to yo
 # Help-Meeeeee
 
 Yet another dashing little script, but this time for troubleshooting. If you use this, please only use the options once or else some options will create duplicate additions to a file. This is still a work in progress, im always looking for things to add that can generally be solved by editing a config or other file. 
-planned features: autofill for a static ip/dns. ETA: good luck
+planned features: autofill for a static ip/dns, autofill for thing that needs specific pi, and replacing text instead of appending in laggy mouse. ETA: good luck
 
 # Wifi-Magicer
 
