@@ -21,7 +21,7 @@ Please Select:
 4. Change Display Mode (fixes "Cannot currently show the dekstop" in vnc as well)
 5. What Pi do I have?
 6. Set Static IP
-7. Mouse trailing behind where it should be / Laggy mouse. 
+8. Mouse trailing behind where it should be / Laggy mouse. 
 0. Quit
 
 WARNING: PLEASE ONLY USE EACH OF THESE OPTIONS ONCE, MULTIPLE USES WILL CAUSE DUPLICATE OPTIONS WHICH CAN RESULT IN IT NOT WORKING!
