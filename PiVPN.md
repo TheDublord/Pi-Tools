@@ -20,10 +20,11 @@ As with PiHole, PiVPN is just as simple. A single command. `sudo curl -L https:/
 10) No, you dont want a custom search domain (unless you have a reason). 
 11) If you have a DDNS, use DNS Entry, otherwise use your public IP. 
 12) Where in the 21st centry, so choose yes you want to use advanced features.
-13) More bits the more secure but the default 256 bit elliptical is perfectly fine, however I will use 521. (They may have made a typo)
+13) More bits the more secure but the default 256 bit elliptical is perfectly fine, however I will use 512. (They may have made a typo)
 14) It generates a key, press enter once finished and it will ask if you want to use unattended upgrades, it's reccomended but not required.
 15) PiVPN is now done installing! Read the on screen instructions to add ovpn profiles. Its reccomended to reboot after it is done. 
 
-To access the VPN from outside you're network, to do this you'll need to port forward. Every router is different but you'll need to log into the router, find wherever it is (Its called NAT/Gaming on AT&T routers generally).
+To access the VPN from outside you're network, to do this you'll need to port forward. Every router is different but you'll need to log into the router, find wherever it is (Its called NAT/Gaming on AT&T routers generally). 
+WARNING: If you port forward it is a VERY good idea to use a non default password, on raspian set a non default password for both the pi and root users. Disabling root logins for ssh is a good idea as well. [Heres a basic tutorial to disable root logins](https://www.tecmint.com/disable-ssh-root-login-in-linux/). Skip to editing the file, I suggest nano over vi. If you use nano, Ctrl+x, Y, Enter to save. [CanYouSeeMe](https://canyouseeme.org/) can be used to check if the port is actually open once finished. 
 
 To create ovpn files, `pivpn add`, enter a name, (its a good practice to create a new profile for every device), press enter when done, set the certificate value to 3650 ( 10 years), then enter a password, then reenter it. It will then generate a key and create the ovpn file. You're ovpn files can be found in `~/ovpns` or `/home/pi/ovpns` that then can be moved out with filezilla or scp. filezilla being the easiest. 
