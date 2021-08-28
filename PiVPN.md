@@ -19,7 +19,7 @@ As with PiHole, PiVPN is just as simple. A single command. `sudo curl -L https:/
 9) This is the DNS. I would reccomend using Google's or Cloudflares DNS as they are the fastest. Up/Down arrows to highlight, space to select. I will use Cloudflare for now (but if you have PiHole you may wish to change it later on which I will explain.)
 10) No, you dont want a custom search domain (unless you have a reason). 
 11) If you have a DDNS, use DNS Entry, otherwise use your public IP. 
-12) Where in the 21st centry, so choose yes you want to use advanced features.
+12) Were in the 21st centry, so choose yes you want to use advanced features.
 13) More bits the more secure but the default 256 bit elliptical is perfectly fine, however I will use 512. (They may have made a typo)
 14) It generates a key, press enter once finished and it will ask if you want to use unattended upgrades, it's reccomended but not required.
 15) PiVPN is now done installing! Read the on screen instructions to add ovpn profiles. Its reccomended to reboot after it is done. 
