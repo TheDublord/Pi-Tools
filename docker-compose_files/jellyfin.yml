@@ -1,0 +1,20 @@
+version: "3.5"
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    # VCHIQ IS FOR THE RPI, FOLLOW https://jellyfin.org/docs/general/administration/hardware-acceleration.html on another device
+    devices:
+      - /dev/vchiq:/dev/vchiq
+    container_name: jellyfin1
+    user: 1000:1000
+    network_mode: "host"
+    privileged: true
+    # CHANGE LEFT SIDE OF COLON TO DESIRED PLACE ON HOST
+    volumes:
+      - /mnt/usbdrive/config:/config
+      - /mnt/usbdrive/cache:/cache
+      - /mnt/usbdrive/media:/media
+    restart: "unless-stopped"
+    # Optional - alternative address used for autodiscovery (host server IP)
+    environment:
+      - JELLYFIN_PublishedServerUrl=
