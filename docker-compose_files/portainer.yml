@@ -1,0 +1,18 @@
+version: "3.5"
+services:
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce
+    restart: unless-stopped
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - portainer_data:/data
+    ports:
+      - "8000:8000"
+      - "9000:9000"
+
+volumes:
+  portainer_data:
+    external: true
+    
+# you may need to "docker volume create portainer_data" first, these volumes are fucky in compose
