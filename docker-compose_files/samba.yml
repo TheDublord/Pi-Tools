@@ -1,0 +1,24 @@
+version: "3.5"
+services:
+  samba:
+    image: dperson/samba
+    container_name: samba
+    environment:
+      - USERID=1000
+      - GROUPID=1000
+      - TZ=$1
+    ports:
+      - "137:137/udp"
+      - "138:138/udp"
+      - "139:139"
+      - "445:445"
+    restart: unless-stopped
+    volumes:
+      - $2:/data
+    command:
+      -u "samba;$3"
+      -s "$4;/data;no;no;no;samba"
+    privileged: true
+    
+    # THINGS TO CHANGE: $1,2,3,4, 4 is name of the share, "samba" is the share username, 3 is password, change 2 to desired location on host
+    # 1=timezone in the weird format, ie pst=PST8PDT
