@@ -1,2 +1,2 @@
 Quick write up of running jellyfin on a RPi-4 as well as some of the performance I observed. Ill add to this eventually, not sure if itll make it to the web if someone is looking for this. 
-Also include the samba docker container stuff too because its cool and a fkin pain. oh and sorry for being lazy, but if someone actually finds this and actually needs help, contact me on discord, its in my bio
+Also include the samba docker container stuff too because its cool and a fkin pain. oh and sorry for being lazy, but if someone actually finds this and actually needs help, contact me on discord, its in my bio, if I deny it, add me again and ill accept probably
