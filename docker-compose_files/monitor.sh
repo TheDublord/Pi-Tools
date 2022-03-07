@@ -12,6 +12,8 @@ created=$(docker container ls -a | grep -o 'Created' | wc -l)
 stopped=$(docker container ls -a | grep -o 'Exited' | wc -l)
 total=$(($running + $created + $stopped))
 
+# Health: Healthy / Unhealthy
+# Running: Running / Created / Stopped
 echo -e "#########################"
 echo -e "Docker container stats:"
 echo -e "Health: \e[32m$healthy \e[97m/ \e[31m$unhealthy\e[0m"
