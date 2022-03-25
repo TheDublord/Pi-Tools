@@ -5,17 +5,18 @@ services:
         environment:
             - PUID=1000
             - PGID=1000
+            # standard timezones, eg America/Los_Angeles
             - TZ=$1
             - SERVERURL=auto
-            - SERVERPORT=$2
-            - PEERS=$3
-            - PEERDNS=192.168.1.7
-            - INTERNAL_SUBNET=10.13.13.0
-            - ALLOWEDIPS=192.168.1.0/24
+            - SERVERPORT=$2 # port you want to expose, default for wireguard is 51820 but I suggest something else
+            - PEERS=$3 # names for clients. Eg: replace $3 with "phone,laptop,guest1", each being the names you want, no spaces
+            - PEERDNS=$5  # suggested=1.1.1.1, but if you use pihole, use IP of the host
+            - INTERNAL_SUBNET=10.13.13.0 # leave this, shouldnt matter
+            - ALLOWEDIPS=192.168.1.0/24 # change to 0.0.0.0/0 if you wanna push everything through. this creates a split tunnel if your net uses the 192.168.1.0 subnet
         ports:
-            - '$2:51820/udp'
+            - '$2:51820/udp' # Change $2 to reflect the SERVERPORT of above
         volumes:
-            - '$4:/config'
+            - '$4:/config' # location configs will be placed. can go anywhere. The path is relative, so id suggect specifying exact places
             - '/lib/modules:/lib/modules'
         restart: unless-stopped
         image: lscr.io/linuxserver/wireguard
@@ -24,3 +25,4 @@ services:
             - SYS_MODULE
         sysctls:
             - net.ipv4.conf.all.src_valid_mark=1
+# Credit/Further docs: https://hub.docker.com/r/linuxserver/wireguard AND https://github.com/linuxserver/docker-wireguard
