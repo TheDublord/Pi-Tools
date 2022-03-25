@@ -22,3 +22,4 @@ services:
     
     # THINGS TO CHANGE: $1,2,3,4, 4 is name of the share, "samba" is the share username, 3 is password, change 2 to desired location on host
     # 1=timezone in the weird format, ie pst=PST8PDT
+    # credit: https://hub.docker.com/r/dperson/samba
