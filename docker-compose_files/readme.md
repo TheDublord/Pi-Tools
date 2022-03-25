@@ -3,7 +3,7 @@
 Be sure you have docker, and docker compose isntalled. Docker supplies and convienece scirpt and compose can be installed via pip3 if you wish (probaly easiest way).
 I also suggest the use of portainer, it makes managing docker containers easy, and updating pihole easier. 
 
-FIles contain notes, READ THEM
+**FIles contain notes on configuration, READ THEM**
 
 ### monitor.sh
 Extremely rudimentry script for getting a brief stat of your containers, running/down/healthy counts, etc. You *should* use "docker ps"
