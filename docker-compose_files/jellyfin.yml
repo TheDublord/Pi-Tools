@@ -11,10 +11,12 @@ services:
     privileged: true
     # CHANGE LEFT SIDE OF COLON TO DESIRED PLACE ON HOST
     volumes:
-      - /mnt/usbdrive/config:/config
-      - /mnt/usbdrive/cache:/cache
-      - /mnt/usbdrive/media:/media
+      - $1:/config
+      - $2:/cache
+      - $3:/media
     restart: "unless-stopped"
     # Optional - alternative address used for autodiscovery (host server IP)
     environment:
       - JELLYFIN_PublishedServerUrl=
+
+# CREDIT: https://hub.docker.com/r/jellyfin/jellyfin/
