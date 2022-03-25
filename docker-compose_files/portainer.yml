@@ -15,4 +15,5 @@ volumes:
   portainer_data:
     external: true
     
-# you may need to "docker volume create portainer_data" first, these volumes are fucky in compose
+# run "docker volume create portainer_data" first, might screw up handling for the volume otherwise
+# Credit: https://hub.docker.com/r/portainer/portainer
