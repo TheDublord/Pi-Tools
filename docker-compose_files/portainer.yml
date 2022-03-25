@@ -16,4 +16,4 @@ volumes:
     external: true
     
 # run "docker volume create portainer_data" first, might screw up handling for the volume otherwise
-# Credit: https://hub.docker.com/r/portainer/portainer
+# Credit: https://hub.docker.com/r/portainer/portainer-ce
