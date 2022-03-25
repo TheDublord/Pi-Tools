@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+    linuxserver:
+        container_name: wireguard
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=$1
+            - SERVERURL=auto
+            - SERVERPORT=$2
+            - PEERS=$3
+            - PEERDNS=192.168.1.7
+            - INTERNAL_SUBNET=10.13.13.0
+            - ALLOWEDIPS=192.168.1.0/24
+        ports:
+            - '$2:51820/udp'
+        volumes:
+            - '$4:/config'
+            - '/lib/modules:/lib/modules'
+        restart: unless-stopped
+        image: lscr.io/linuxserver/wireguard
+        cap_add:
+            - NET_ADMIN
+            - SYS_MODULE
+        sysctls:
+            - net.ipv4.conf.all.src_valid_mark=1
