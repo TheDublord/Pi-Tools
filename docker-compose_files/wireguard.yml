@@ -5,7 +5,7 @@ services:
         environment:
             - PUID=1000
             - PGID=1000
-            # standard timezones, eg America/Los_Angeles
+            # standard timezones, eg America/Los_Angeles for PST, use TZ database name from here: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones 
             - TZ=$1
             - SERVERURL=auto
             - SERVERPORT=$2 # port you want to expose, default for wireguard is 51820 but I suggest something else
@@ -13,6 +13,7 @@ services:
             - PEERDNS=$5  # suggested=1.1.1.1, but if you use pihole, use IP of the host
             - INTERNAL_SUBNET=10.13.13.0 # leave this, shouldnt matter
             - ALLOWEDIPS=192.168.1.0/24 # change to 0.0.0.0/0 if you wanna push everything through. this creates a split tunnel if your net uses the 192.168.1.0 subnet
+                                         # A split tunnel allows you to access services on your LAN, but still passes everything else onto the internet like normal (I think)
         ports:
             - '$2:51820/udp' # Change $2 to reflect the SERVERPORT of above
         volumes:
@@ -26,3 +27,5 @@ services:
         sysctls:
             - net.ipv4.conf.all.src_valid_mark=1
 # Credit/Further docs: https://hub.docker.com/r/linuxserver/wireguard AND https://github.com/linuxserver/docker-wireguard
+# **Eq docker run**: docker run -v $4:/config -v /lib/modules:/lib/modules --name wireguard --sysctl net.ipv4.conf.all.src_valid_mark=1 --cap-add NET_ADMIN --cap-add SYS_MODULE -p $2:51820/udp -e PUID=1000 -e PGID=1000 -e TZ=$1 -e SERVERURL=auto -e SERVERPORT=$2 -e PEERS=$3 -e PEERDNS=$5 -e INTERNAL_SUBNET=10.13.13.0 -e ALLOWEDIPS=192.168.1.0/24 lscr.io/linuxserver/wireguard 
+# Paste somewhere and change $ numbers in run command too. 
